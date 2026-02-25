@@ -9,5 +9,4 @@ public class WiringApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WiringApplication.class, args);
 	}
-
 }
