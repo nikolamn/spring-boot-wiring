@@ -9,18 +9,45 @@ H2 in-memory DB is used
 
 ## Key Concepts
 
-- **Auto-configured beans**: 
-    * DataSource, EntityManagerFactory, TransactionManager, DispatcherServlet, RequestMappingHandlerMapping, Validator 
-- **Manual overrides**: 
-    * `ManualBeansConfig` shows how to replace auto-configured beans if needed, all commented by default  
-- **Properties**: 
-    * `GreetingProperties` binds `app.greeting.prefix` from `application.yml`, default is `"Hello"`, overridden by yml  
-- **Validation**: 
-    * `GreetingService` validates input using Boot’s auto Validator 
-- **JPA + H2**: 
-    * `Person` entity persists in H2, tables auto-created, accessible via `/person` endpoints.  
-- **REST**: 
-    * `PersonController` exposes CRUD endpoints, Boot wires DispatcherServlet + handler mapping automatically
+- **Spring Boot Auto-Configuration**
+  * `DataSourceAutoConfiguration`
+  * `HibernateJpaAutoConfiguration`
+  * `WebMvcAutoConfiguration`
+  * `ValidationAutoConfiguration`
+  * Automatically creates: `DataSource`, `EntityManagerFactory`, `PlatformTransactionManager`, `DispatcherServlet`, `RequestMappingHandlerMapping`, `Validator`
+
+- **Spring Data JPA**
+  * `JpaRepository`
+  * `EntityManager`
+  * `@Entity`, `@Id`, `@GeneratedValue`
+  * Hibernate as JPA provider
+
+- **H2 Database**
+  * In-memory database (`jdbc:h2:mem:testdb`)
+  * Tables auto-created via Hibernate (`ddl-auto`)
+  * H2 web console enabled
+
+- **Configuration Properties**
+  * `@ConfigurationProperties`
+  * Externalized config from `application.yml`
+  * Type-safe binding (`GreetingProperties`)
+
+- **Bean Overriding**
+  * `@Configuration`
+  * `@Bean`
+  * `@Primary`
+  * Manual override of auto-configured beans via `ManualBeansConfig`
+
+- **Validation**
+  * `jakarta.validation`
+  * `LocalValidatorFactoryBean`
+  * `@NotNull`
+
+- **Spring MVC / REST**
+  * `@RestController`
+  * `@RequestMapping`, `@GetMapping`, `@PostMapping`
+  * `DispatcherServlet`
+  * `RequestMappingHandlerMapping`
 
 ---
 
