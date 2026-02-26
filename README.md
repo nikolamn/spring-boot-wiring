@@ -3,7 +3,8 @@
 ## Overview
 
 Demo shows how Spring Boot wires the core automatically — like DataSource, JPA, transactions, MVC, validation — but also how things can be overriden manually if needed
-H2 in-memory DB is used
+
+H2 in-memory DB was used
 
 ---
 
